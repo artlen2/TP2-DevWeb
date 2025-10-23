@@ -28,6 +28,9 @@ function toggleTheme() {
   // Sauvegarde dans le localStorage
   localStorage.setItem("theme", theme.value);
 }
+
+// Formulaire
+const editing = ref(false);
 </script>
 
 <template>
@@ -41,6 +44,21 @@ function toggleTheme() {
         <!-- Logo / Titre -->
         <h1 class="text-2xl font-(--font-dancing)">Ma Collection</h1>
 
+        <button
+          @click="editing = true"
+          v-if="!editing"
+          class="p-2 rounded bg-accent text-(--dark-text-primaire) dark:bg-(--dark-accent) dark:text-text-primaire cursor-pointer"
+        >
+          Ajouter un album
+        </button>
+        <button
+          @click="editing = false"
+          v-if="editing"
+          class="p-2 rounded bg-accent text-(--dark-text-primaire) dark:bg-(--dark-accent) dark:text-text-primaire cursor-pointer"
+        >
+          Fermer la fenêtre
+        </button>
+
         <!-- Boutons du header -->
         <div class="flex items-center space-x-4">
           <!-- Toggle Dark Mode -->
@@ -53,88 +71,91 @@ function toggleTheme() {
         </div>
       </div>
     </header>
-
-    <main class="grow p-5 bg-bg dark:bg-(--dark-bg)">
-      <form action="#" class="bg-bg-card p-10 dark:bg-(--dark-bg-card) rounded">
-        <div class="flex justify-between items-center mb-5">
-          <h2 class="text-xl">Entrée des informations</h2>
-          <button
-            class="p-2 rounded text-text-primaire dark:text-(--dark-text-primaire) hover:bg-border dark:hover:bg-(--dark-border) transition"
-          >
-            X
-          </button>
-        </div>
-
-        <div class="flex gap-3">
-          <label class="mb-5 w-1/4 flex gap-2 items-center" for="name">
-            <span
-              class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
-              >Nom :
-            </span>
-            <input
-              class="input-label placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) text-text-primaire dark:text-(--dark-text-primaire)"
-              type="text"
-              id="name"
-              placeholder="Nom de l'album"
-            />
-          </label>
-          <label class="mb-5 w-1/4 flex gap-2 items-center" for="artist">
-            <span
-              class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
-              >Artiste :
-            </span>
-            <input
-              class="input-label placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) text-text-primaire dark:text-(--dark-text-primaire)"
-              type="text"
-              id="artist"
-              placeholder="Nom de l'artiste"
-            />
-          </label>
-          <label class="mb-5 w-1/4 flex gap-2 items-center" for="year">
-            <span
-              class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
-              >Année :
-            </span>
-            <input
-              type="date"
-              id="year"
-              v-model="date"
-              :class="[
-                'input-label',
-                date ? 'text-text-primaire' : 'text-text-secondaire',
-              ]"
-            />
-          </label>
-          <label class="mb-5 w-1/4 flex gap-2 items-center" for="style">
-            <span
-              class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
-              >Style :
-            </span>
-            <select
-              id="genre"
-              class="input-label text-text-secondaire dark:text-(--dark-text-secondaire)"
-            >
-              <option
-                value=""
-                class="text-text-secondaire dark:text-(--dark-text-secondaire)"
-              >
-                Choisir le style de l'album
-              </option>
-              <option value="Rap">Rap</option>
-              <option value="Romantique">Romantique</option>
-              <option value="Dark">Dark</option>
-              <option value="Metal">Metal</option>
-              <option value="Hip-hop">Hip-hop</option>
-            </select>
-          </label>
-        </div>
+    <form
+      v-if="editing"
+      action="#"
+      class="bg-bg-card p-10 dark:bg-(--dark-bg-card) rounded absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+      <div class="flex justify-between items-center mb-5">
+        <h2 class="text-xl">Entrée des informations</h2>
         <button
-          class="p-2 rounded bg-accent text-(--dark-text-primaire) dark:bg-(--dark-accent) dark:text-text-primaire"
+          @click="editing = false"
+          class="p-2 rounded text-text-primaire dark:text-(--dark-text-primaire) hover:bg-border dark:hover:bg-(--dark-border) transition"
         >
-          Enregistrer
+          X
         </button>
-      </form>
+      </div>
 
+      <div class="flex gap-3">
+        <label class="mb-5 w-1/4 flex gap-2 items-center" for="name">
+          <span
+            class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
+            >Nom :
+          </span>
+          <input
+            class="input-label placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) text-text-primaire dark:text-(--dark-text-primaire)"
+            type="text"
+            id="name"
+            placeholder="Nom de l'album"
+          />
+        </label>
+        <label class="mb-5 w-1/4 flex gap-2 items-center" for="artist">
+          <span
+            class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
+            >Artiste :
+          </span>
+          <input
+            class="input-label placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) text-text-primaire dark:text-(--dark-text-primaire)"
+            type="text"
+            id="artist"
+            placeholder="Nom de l'artiste"
+          />
+        </label>
+        <label class="mb-5 w-1/4 flex gap-2 items-center" for="year">
+          <span
+            class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
+            >Année :
+          </span>
+          <input
+            type="date"
+            id="year"
+            v-model="date"
+            :class="[
+              'input-label',
+              date ? 'text-text-primaire' : 'text-text-secondaire',
+            ]"
+          />
+        </label>
+        <label class="mb-5 w-1/4 flex gap-2 items-center" for="style">
+          <span
+            class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
+            >Genre :
+          </span>
+          <select
+            id="genre"
+            class="input-label text-text-secondaire dark:text-(--dark-text-secondaire)"
+          >
+            <option
+              value=""
+              class="text-text-secondaire dark:text-(--dark-text-secondaire)"
+            >
+              Choisir le style de l'album
+            </option>
+            <option value="Rap">Rap</option>
+            <option value="Romantique">Romantique</option>
+            <option value="Dark">Dark</option>
+            <option value="Metal">Metal</option>
+            <option value="Hip-hop">Hip-hop</option>
+          </select>
+        </label>
+      </div>
+      <button
+        class="p-2 rounded bg-accent text-(--dark-text-primaire) dark:bg-(--dark-accent) dark:text-text-primaire"
+      >
+        Enregistrer
+      </button>
+    </form>
+    <main class="grow p-5 bg-bg dark:bg-(--dark-bg)">
       <div class="w-full">
         <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
           <li>
