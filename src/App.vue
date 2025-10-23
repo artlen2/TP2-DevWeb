@@ -72,7 +72,7 @@ function toggleTheme() {
               >Nom :
             </span>
             <input
-              class="input-label"
+              class="input-label placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) text-text-primaire dark:text-(--dark-text-primaire)"
               type="text"
               id="name"
               placeholder="Nom de l'album"
@@ -84,7 +84,7 @@ function toggleTheme() {
               >Artiste :
             </span>
             <input
-              class="input-label"
+              class="input-label placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) text-text-primaire dark:text-(--dark-text-primaire)"
               type="text"
               id="artist"
               placeholder="Nom de l'artiste"
@@ -95,14 +95,25 @@ function toggleTheme() {
               class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
               >Année :
             </span>
-            <input class="input-label" type="date" id="year" />
+            <input
+              type="date"
+              id="year"
+              v-model="date"
+              :class="[
+                'input-label',
+                date ? 'text-text-primaire' : 'text-text-secondaire',
+              ]"
+            />
           </label>
           <label class="mb-5 w-1/4 flex gap-2 items-center" for="style">
             <span
               class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
               >Style :
             </span>
-            <select id="genre" class="input-label">
+            <select
+              id="genre"
+              class="input-label text-text-secondaire dark:text-(--dark-text-secondaire)"
+            >
               <option
                 value=""
                 class="text-text-secondaire dark:text-(--dark-text-secondaire)"
@@ -117,6 +128,11 @@ function toggleTheme() {
             </select>
           </label>
         </div>
+        <button
+          class="p-2 rounded bg-accent text-(--dark-text-primaire) dark:bg-(--dark-accent) dark:text-text-primaire"
+        >
+          Enregistrer
+        </button>
       </form>
 
       <div class="w-full">
@@ -131,7 +147,8 @@ function toggleTheme() {
     <footer
       class="flex justify-center items-center min-h-10 bg-bg dark:bg-(--dark-bg) text-text-primaire dark:text-(--dark-text-primaire) shadow-[0px_-4px_6px_0px_rgba(0,0,0,0.1)]"
     >
-      &copy; 2025
+      &copy;2025 Elena Savinova. Réalisé dans le cadre scolaire de 3e session au
+      collégial dans le cours de Développement Web.
     </footer>
   </div>
 </template>
