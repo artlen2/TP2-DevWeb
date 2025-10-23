@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Déclare une variante personnalisée pour le mode sombre */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Styles globaux pour la typographie */
+h1 {
+  @apply text-4xl;
+  font-family: var(--font-dancing);
+}
+
+h2 {
+  @apply text-2xl font-semibold dark:text-slate-100;
+}
+
+h3 {
+  @apply text-xl text-slate-900 dark:text-slate-100;
+}
+
+@theme {
+  /* Police */
+  --font-dancing: "Dancing Script", serif;
+
+  /* Thème clair */
+  --color-principal: #1e3a8a;
+  --color-secondaire: #e11d48;
+  --color-bg: #f9fafb;
+  --color-bg-card: #ffffff;
+  --color-text-primaire: #111827;
+  --color-text-secondaire: #6b7280;
+  --color-accent: #60a5fa;
+  --color-border: #e5e7eb;
+
+  /* Thème sombre */
+  --dark-principal: #60a5fa;
+  --dark-secondaire: #f472b6;
+  --dark-bg: #0f172a;
+  --dark-bg-card: #1e293b;
+  --dark-text-primaire: #f1f5f9;
+  --dark-text-secondaire: #94a3b8;
+  --dark-accent: #38bdf8;
+  --dark-border: #334155;
+}
