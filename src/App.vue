@@ -72,7 +72,7 @@ function toggleTheme() {
               >Nom :
             </span>
             <input
-              class="bg-bg dark:bg-(--dark-bg) placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) grow rounded p-2 focus:border-accent dark:focus:border-(--dark-accent) text-text-primaire dark:text-(--dark-text-primaire)"
+              class="input-label"
               type="text"
               id="name"
               placeholder="Nom de l'album"
@@ -84,7 +84,7 @@ function toggleTheme() {
               >Artiste :
             </span>
             <input
-              class="bg-bg dark:bg-(--dark-bg) placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) grow rounded p-2 focus:border-accent dark:focus:border-(--dark-accent) text-text-primaire dark:text-(--dark-text-primaire)"
+              class="input-label"
               type="text"
               id="artist"
               placeholder="Nom de l'artiste"
@@ -95,21 +95,14 @@ function toggleTheme() {
               class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
               >Année :
             </span>
-            <input
-              class="bg-bg dark:bg-(--dark-bg) placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) grow rounded p-2 focus:border-accent dark:focus:border-(--dark-accent) text-text-primaire dark:text-(--dark-text-primaire)"
-              type="date"
-              id="year"
-            />
+            <input class="input-label" type="date" id="year" />
           </label>
           <label class="mb-5 w-1/4 flex gap-2 items-center" for="style">
             <span
               class="font-semibold text-text-secondaire dark:text-(--dark-text-secondaire)"
               >Style :
             </span>
-            <select
-              id="genre"
-              class="bg-bg dark:bg-(--dark-bg) placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) grow rounded p-2 focus:border-accent dark:focus:border-(--dark-accent) text-text-primaire dark:text-(--dark-text-primaire)"
-            >
+            <select id="genre" class="input-label">
               <option
                 value=""
                 class="text-text-secondaire dark:text-(--dark-text-secondaire)"

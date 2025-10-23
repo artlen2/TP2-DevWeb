@@ -13,5 +13,5 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-  base: "/etudiants/2024/savinovae/tp2",
+  // base: "/etudiants/2024/savinovae/tp2",
 });

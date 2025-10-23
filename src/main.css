@@ -46,3 +46,7 @@ h3 {
   --dark-accent: #38bdf8;
   --dark-border: #334155;
 }
+
+.input-label {
+  @apply bg-bg dark:bg-(--dark-bg) placeholder:text-text-secondaire dark:placeholder:text-(--dark-text-secondaire) grow rounded p-2 focus:border-accent dark:focus:border-(--dark-accent) text-text-primaire dark:text-(--dark-text-primaire);
+}
